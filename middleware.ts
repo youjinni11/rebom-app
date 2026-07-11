@@ -21,7 +21,7 @@ const setupRoutes = [
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith("/demo")) {
+  if (pathname.startsWith("/demo") || pathname.startsWith("/wireframe")) {
     return NextResponse.next();
   }
 
