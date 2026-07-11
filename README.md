@@ -7,10 +7,11 @@
 제품 규칙·화면 순서·결제·운영 Admin을 정리한 문서입니다.  
 GitHub에서 다이어그램이 **그림으로** 보입니다.
 
-→ **[docs/FLOWCHART.md](./docs/FLOWCHART.md)** (그림 중심)  
-→ **[docs/FRAMEWORK.md](./docs/FRAMEWORK.md)** (화면·DB·API 전체)
+→ **[docs/FLOWCHART.md](./docs/FLOWCHART.md)** (그림 중심 플로우)  
+→ **[docs/FRAMEWORK.md](./docs/FRAMEWORK.md)** (화면·DB·API 전체)  
+→ **[docs/WIREFRAMES.md](./docs/WIREFRAMES.md)** (모바일 와이어프레임)
 
-> 구 MVP 코드와 목표가 다를 수 있습니다. **구현은 FLOWCHART / FRAMEWORK를 우선**하세요.
+> 구 MVP 코드와 목표가 다를 수 있습니다. **구현은 위 문서들을 우선**하세요.
 
 ## 주요 기능 (목표 프레임워크)
 

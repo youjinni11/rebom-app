@@ -1,14 +1,14 @@
 # 리봄 앱 — 플로우차트 (GitHub용)
 
-> 개발자는 **이 문서 + [FRAMEWORK.md](./FRAMEWORK.md)** 만 보고 구현합니다.  
-> GitHub에서 아래 Mermaid 그림이 바로 렌더링됩니다.  
-> 와이어프레임·UI 시안은 **프레임워크 확정 후** 별도.
+> 개발자는 **이 문서 + [FRAMEWORK.md](./FRAMEWORK.md) + [WIREFRAMES.md](./WIREFRAMES.md)** 를 보고 구현합니다.  
+> GitHub에서 아래 Mermaid 그림이 바로 렌더링됩니다.
 
 | | |
 |--|--|
 | 범위 | 유저 앱 + 운영 Admin (랜딩·사전예약 웹 제외) |
 | 버전 | 2026-07-11 (제품 인터뷰 확정본) |
 | 상세 스펙 | [FRAMEWORK.md](./FRAMEWORK.md) (화면·DB·API·예외 전부) |
+| 와이어프레임 | [WIREFRAMES.md](./WIREFRAMES.md) (모바일 화면 배치) |
 
 ---
 
@@ -178,6 +178,7 @@ flowchart LR
 |------|------|
 | **[FLOWCHART.md](./FLOWCHART.md)** (본 문서) | GitHub에서 보는 **그림 중심** 플로우 |
 | **[FRAMEWORK.md](./FRAMEWORK.md)** | 화면·필드·DB·API·예외 **전부** |
+| **[WIREFRAMES.md](./WIREFRAMES.md)** | 모바일 **화면 배치** 와이어프레임 |
 | `리봄-앱-플로우차트-개발자전달용.md` | FRAMEWORK와 동일 내용 (한글 파일명 백업) |
 
 문의: primesenior0530@gmail.com
