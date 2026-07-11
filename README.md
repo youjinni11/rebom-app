@@ -2,12 +2,12 @@
 
 미혼 인증 기반 5060 세대를 위한 매칭 서비스입니다.
 
-## 개발자용 플로우차트 (필수 읽기)
+## 개발자용 프레임워크 (필수 읽기)
 
 제품 규칙·화면 순서·결제·운영 Admin까지 정리한 문서입니다.  
-→ **[docs/FLOWCHART.md](./docs/FLOWCHART.md)**
+→ **[docs/FRAMEWORK.md](./docs/FRAMEWORK.md)**
 
-> 구 MVP 코드와 목표가 다를 수 있습니다. **구현은 FLOWCHART.md를 우선**하세요.
+> 구 MVP 코드와 목표가 다를 수 있습니다. **구현은 FRAMEWORK.md를 우선**하세요.
 
 ## 주요 기능 (목표 프레임워크)
 
