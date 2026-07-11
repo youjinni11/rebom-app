@@ -107,7 +107,7 @@ export default function ProfilePage() {
         return;
       }
 
-      router.push("/home");
+      router.push("/values");
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "프로필 저장에 실패했습니다.");

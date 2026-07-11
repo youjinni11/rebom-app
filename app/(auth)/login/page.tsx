@@ -8,11 +8,12 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 import { formatAuthError } from "@/lib/auth-errors";
+import { Logo } from "@/components/Logo";
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") ?? "/home";
+  const redirect = searchParams.get("redirect") ?? "/matches";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -73,9 +74,11 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-12 bg-background">
       <div className="w-full max-w-md space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-primary">리봄</h1>
-          <p className="text-xl text-foreground/70 mt-2">로그인</p>
+        <div className="text-center space-y-2">
+          <div className="flex justify-center">
+            <Logo size="xl" href="/" textClassName="text-primary" />
+          </div>
+          <p className="text-xl text-foreground/70">로그인</p>
         </div>
 
         <Suspense fallback={<Card><p className="text-lg text-center">불러오는 중...</p></Card>}>

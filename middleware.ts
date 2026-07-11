@@ -1,13 +1,31 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const publicRoutes = ["/", "/login", "/signup"];
+const publicRoutes = [
+  "/",
+  "/login",
+  "/signup",
+  "/pre-register",
+  "/privacy",
+  "/welcome",
+  "/onboarding",
+];
 const authRoutes = ["/login", "/signup"];
-const onboardingRoutes = ["/signup/verify", "/profile"];
+const setupRoutes = [
+  "/signup/verify",
+  "/profile",
+  "/values",
+  "/lifestyle",
+];
 
 export async function middleware(request: NextRequest) {
-  const { supabase, user, supabaseResponse } = await updateSession(request);
   const pathname = request.nextUrl.pathname;
+
+  if (pathname.startsWith("/demo")) {
+    return NextResponse.next();
+  }
+
+  const { supabase, user, supabaseResponse } = await updateSession(request);
 
   const isPublic = publicRoutes.some(
     (route) => pathname === route || pathname.startsWith("/signup")
@@ -31,9 +49,20 @@ export async function middleware(request: NextRequest) {
 
   if (isAuthRoute && pathname !== "/signup/verify") {
     const url = request.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/matches";
     return NextResponse.redirect(url);
   }
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select(
+      "is_complete, values_complete, lifestyle_complete, phone_verified_at, face_verified_at, marital_deferred"
+    )
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  const phoneFaceDone =
+    !!profile?.phone_verified_at && !!profile?.face_verified_at;
 
   const { data: verification } = await supabase
     .from("verifications")
@@ -42,35 +71,54 @@ export async function middleware(request: NextRequest) {
     .eq("type", "marital")
     .maybeSingle();
 
-  const isVerified = verification?.status === "approved";
+  const isMaritalVerified = verification?.status === "approved";
+  const maritalOk = isMaritalVerified || !!profile?.marital_deferred;
 
-  if (!isVerified && !pathname.startsWith("/signup/verify") && pathname !== "/signup") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/signup/verify";
-    return NextResponse.redirect(url);
+  if (!phoneFaceDone || !maritalOk) {
+    if (!pathname.startsWith("/signup/verify") && pathname !== "/signup") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/signup/verify";
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
   }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("is_complete")
-    .eq("user_id", user.id)
-    .maybeSingle();
 
   const isProfileComplete = profile?.is_complete ?? false;
+  const isValuesComplete = profile?.values_complete ?? false;
+  const isLifestyleComplete = profile?.lifestyle_complete ?? false;
+  const allSetupComplete =
+    isProfileComplete && isValuesComplete && isLifestyleComplete;
 
-  if (
-    isVerified &&
-    !isProfileComplete &&
-    !onboardingRoutes.some((r) => pathname.startsWith(r))
-  ) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/profile";
-    return NextResponse.redirect(url);
+  if (!isProfileComplete) {
+    if (!pathname.startsWith("/profile")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/profile";
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
   }
 
-  if (isVerified && isProfileComplete && onboardingRoutes.some((r) => pathname.startsWith(r))) {
+  if (!isValuesComplete) {
+    if (!pathname.startsWith("/values")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/values";
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
+  }
+
+  if (!isLifestyleComplete) {
+    if (!pathname.startsWith("/lifestyle")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/lifestyle";
+      return NextResponse.redirect(url);
+    }
+    return supabaseResponse;
+  }
+
+  if (allSetupComplete && setupRoutes.some((r) => pathname.startsWith(r))) {
     const url = request.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/matches";
     return NextResponse.redirect(url);
   }
 

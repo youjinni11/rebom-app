@@ -33,7 +33,7 @@ const problems = [
       </svg>
     ),
     title: "중요한 정보 부재",
-    description: "재혼 여부, 자녀 유무, 직업 등 현실적 정보 확인 불가",
+    description: "미혼 사실 여부, 자녀 유무, 직업 등 현실적 정보 확인 불가",
   },
 ];
 
@@ -43,10 +43,8 @@ export function ProblemsSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center space-y-4 mb-16">
           <p className="text-sm text-[#888] tracking-wide">기존 서비스의 한계</p>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a] leading-snug">
-            왜 시니어를 위한 제대로 된
-            <br />
-            서비스가 없었을까요?
+          <h2 className="landing-heading text-2xl md:text-3xl font-semibold text-[#1a1a1a]">
+            왜 시니어를 위한 제대로 된 서비스가 없었을까요?
           </h2>
         </div>
 
@@ -58,7 +56,7 @@ export function ProblemsSection() {
             >
               <div className="flex justify-center text-[#999]">{item.icon}</div>
               <h3 className="font-semibold text-[#1a1a1a] text-base">{item.title}</h3>
-              <p className="text-sm text-[#777] leading-relaxed">{item.description}</p>
+              <p className="text-sm text-[#777]">{item.description}</p>
             </div>
           ))}
         </div>

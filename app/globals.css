@@ -55,8 +55,200 @@ body {
   color: var(--foreground);
   font-size: 1.125rem;
   line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 랜딩 페이지 — 단어·문장 단위 줄바꿈 */
+.landing-prose {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.landing-heading {
+  word-break: keep-all;
+  text-wrap: balance;
+  line-height: 1.45;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* 데모 GIF 녹화용 애니메이션 */
+@keyframes demo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes demo-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes demo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(201, 169, 98, 0.25);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(201, 169, 98, 0.4);
+  }
+}
+
+.animate-demo-fade-in {
+  animation: demo-fade-in 0.8s ease-out both;
+}
+
+.animate-demo-slide-up {
+  animation: demo-slide-up 0.8s ease-out 0.2s both;
+}
+
+.animate-demo-pulse {
+  animation: demo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes demo-pulse-brand {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(26, 71, 58, 0.2);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(26, 71, 58, 0.35);
+  }
+}
+
+.animate-demo-pulse-brand {
+  animation: demo-pulse-brand 2s ease-in-out infinite;
+}
+
+/* 데모 화면 — 모던 고딕 통일, 발표장 시인성 */
+.demo-screen {
+  font-family: var(--font-geist-sans), "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes demo-tap-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes demo-tap-press {
+  0% {
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+}
+
+.animate-demo-tap-ring {
+  animation: demo-tap-ring 0.55s ease-out forwards;
+}
+
+.animate-demo-tap-press {
+  animation: demo-tap-press 0.55s ease-out forwards;
+}
+
+@keyframes demo-scan-line {
+  0% {
+    top: 12%;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 88%;
+    opacity: 0.4;
+  }
+}
+
+@keyframes demo-scan-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(26, 71, 58, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(26, 71, 58, 0.08);
+  }
+}
+
+.animate-demo-scan-line {
+  animation: demo-scan-line 2s ease-in-out infinite;
+}
+
+.animate-demo-scan-pulse {
+  animation: demo-scan-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes demo-type-cursor {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-demo-type-cursor {
+  animation: demo-type-cursor 1s step-end infinite;
+}
+
+@keyframes welcome-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-welcome-fade-in {
+  animation: welcome-fade-in 0.7s ease-out both;
+}
+
+.animate-welcome-slide-up {
+  animation: welcome-slide-up 0.75s ease-out both;
 }

@@ -13,10 +13,25 @@ const notoSerif = Noto_Serif_KR({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteTitle = "리봄 — 품격있는 프리미엄 시니어 멤버십";
+const siteDescription =
+  "50대 이상을 위한 다단계 신원 검증 기반 프리미엄 인연 플랫폼. 검증된 인연만이 모이는 공간, 리봄.";
+
 export const metadata: Metadata = {
-  title: "리봄 — 프리미엄 시니어 멤버십",
-  description:
-    "50대 이상을 위한 다단계 신원 검증 기반 프리미엄 인연 플랫폼. 검증된 인연만이 모이는 공간, 리봄.",
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: "website",
+    locale: "ko_KR",
+    siteName: "리봄",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

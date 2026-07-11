@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Logo } from "@/components/Logo";
 
 const navItems = [
   { label: "ABOUT", href: "#about" },
@@ -16,12 +17,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#faf9f6]/90 backdrop-blur-sm border-b border-[#e8e6e1]/60">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="font-serif text-xl font-semibold text-[#1a1a1a] tracking-tight">
-            리봄
-          </span>
-          <span className="w-2 h-2 rounded-sm bg-teal" />
-        </Link>
+        <Logo size="md" />
 
         <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (

@@ -1,9 +1,9 @@
 const steps = [
   {
     num: "01",
-    title: "멤버십 신청",
+    title: "사전예약 신청",
     description:
-      "기본 정보를 입력하고 멤버십 플랜을 선택하세요. 신청 후 영업일 1-2일 이내 검토가 시작됩니다.",
+      "이름·연령대·연락처를 남겨주세요. 정식 오픈 시 가장 먼저 안내해 드립니다.",
   },
   {
     num: "02",
@@ -15,13 +15,13 @@ const steps = [
     num: "03",
     title: "프로필 설정",
     description:
-      "공개를 원하는 정보만 선택하여 프로필을 완성합니다. 매니저가 완성도를 함께 도와드립니다.",
+      "공개를 원하는 정보만 선택하여 프로필을 완성합니다. 단계별 안내에 따라 진행할 수 있습니다.",
   },
   {
     num: "04",
     title: "인연 시작",
     description:
-      "큐레이션 매칭과 직접 탐색 두 가지 방식으로 소중한 인연을 만나보세요.",
+      "추천과 탐색을 통해 나에게 맞는 인연을 편하게 만나보세요.",
   },
 ];
 
@@ -31,7 +31,7 @@ export function HowItWorksSection() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center space-y-4 mb-16">
           <p className="text-sm text-teal tracking-wide">이용 방법</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-[#1a1a1a]">
+          <h2 className="landing-heading font-serif text-3xl md:text-4xl font-medium text-[#1a1a1a]">
             리봄, 이렇게 시작하세요
           </h2>
         </div>
@@ -48,7 +48,7 @@ export function HowItWorksSection() {
                 </span>
                 <h3 className="font-semibold text-[#1a1a1a] text-lg">{item.title}</h3>
               </div>
-              <p className="text-sm text-[#777] leading-relaxed pl-14">
+              <p className="text-sm text-[#777] pl-14">
                 {item.description}
               </p>
             </div>

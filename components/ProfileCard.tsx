@@ -11,6 +11,7 @@ interface ProfileCardProps {
   interestLoading?: boolean;
   showInterestButton?: boolean;
   interestSent?: boolean;
+  compact?: boolean;
 }
 
 export function ProfileCard({
@@ -19,6 +20,7 @@ export function ProfileCard({
   interestLoading = false,
   showInterestButton = true,
   interestSent = false,
+  compact = false,
 }: ProfileCardProps) {
   const photoUrl =
     profile.photo_urls?.[0] ??
@@ -27,6 +29,48 @@ export function ProfileCard({
   const age = profile.birth_year
     ? new Date().getFullYear() - profile.birth_year
     : null;
+
+  if (compact) {
+    return (
+      <div className="bg-white border-2 border-border rounded-2xl p-4 shadow-sm">
+        <div className="relative w-full h-44 rounded-xl overflow-hidden mb-3">
+          <Image
+            src={photoUrl}
+            alt={profile.display_name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 400px"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-primary">
+          {profile.display_name}
+          {age && (
+            <span className="text-lg font-normal text-foreground/70"> · {age}세</span>
+          )}
+        </h3>
+        <p className="text-base text-foreground/80 mt-1">📍 {profile.region}</p>
+        {profile.bio && (
+          <p className="text-base text-foreground/70 leading-snug mt-2 line-clamp-2">
+            {profile.bio}
+          </p>
+        )}
+        {showInterestButton && onInterest && (
+          <div className="mt-4">
+            <Button
+              fullWidth
+              onClick={onInterest}
+              loading={interestLoading}
+              disabled={interestSent}
+              variant={interestSent ? "secondary" : "gold"}
+              className="min-h-12 text-lg font-bold"
+            >
+              {interestSent ? "관심 표시 완료" : "관심 있어요"}
+            </Button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <Card className="overflow-hidden ring-1 ring-border/80">

@@ -15,15 +15,15 @@ const badges = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
       </svg>
     ),
-    label: "검증 완료 회원만",
+    label: "50대 이상 전용",
   },
   {
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
       </svg>
     ),
-    label: "운영팀 직접 검수",
+    label: "프라이버시 보호",
   },
 ];
 
@@ -41,11 +41,11 @@ export function Hero() {
       <div className="relative max-w-3xl mx-auto text-center space-y-8">
         <div className="flex items-center justify-center gap-4">
           <span className="h-px w-12 bg-[#d4d2cd]" />
-          <span className="text-sm text-teal tracking-wide">프리미엄 시니어 멤버십</span>
+          <span className="text-sm text-teal tracking-wide">품격있는 프리미엄 시니어 멤버십</span>
           <span className="h-px w-12 bg-[#d4d2cd]" />
         </div>
 
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium text-[#1a1a1a] leading-tight tracking-tight">
+        <h1 className="landing-heading font-serif text-5xl md:text-6xl lg:text-7xl font-medium text-[#1a1a1a] tracking-tight">
           다시, 봄이 옵니다
         </h1>
 
@@ -53,12 +53,11 @@ export function Hero() {
           RE:BOM — SPRING RETURNS AGAIN
         </p>
 
-        <div className="space-y-3 text-[#555] text-base md:text-lg leading-relaxed max-w-xl mx-auto pt-2">
-          <p>검증된 인연만이 모이는 공간,</p>
-          <p>리봄에서 새로운 시작을 경험하세요.</p>
+        <div className="space-y-3 text-[#555] text-base md:text-lg max-w-xl mx-auto pt-2">
+          <p>검증된 인연만이 모이는 공간, 리봄에서 새로운 시작을 경험하세요.</p>
           <p className="text-[#777] text-sm md:text-base pt-2">
-            리봄은 50대 이상 성숙한 분들을 위해 다단계 신원 검증을 통과한
-            회원만 입장 가능한 프리미엄 인연 플랫폼입니다.
+            리봄은 50대 이상을 위해 설계된 프리미엄 인연 플랫폼입니다. 다단계 신원
+            검증을 통과한 회원만 이용할 수 있습니다.
           </p>
         </div>
 
@@ -76,10 +75,10 @@ export function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
           <Link
-            href="/signup"
+            href="/pre-register"
             className="inline-flex items-center justify-center px-10 py-4 bg-teal text-white text-base font-medium hover:bg-teal-hover transition-colors"
           >
-            멤버십 신청하기
+            사전예약 신청하기
           </Link>
           <a
             href="#about"

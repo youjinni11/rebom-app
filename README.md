@@ -64,7 +64,9 @@ MOCK_VERIFICATION=true
 Supabase 대시보드 **SQL Editor**에서 순서대로 실행합니다.
 
 1. `supabase/migrations/001_initial.sql` — 테이블, RLS, Storage 버킷
-2. `supabase/migrations/002_seed.sql` — 시드 함수 정의 후 아래 실행:
+2. `supabase/migrations/003_pre_registrations.sql` — 사전예약 신청 테이블
+   - 이미 003을 실행했다면 `004_age_range_granular.sql`도 실행
+3. `supabase/migrations/002_seed.sql` — 시드 함수 정의 후 아래 실행:
 
 ```sql
 SELECT seed_dummy_profiles();
@@ -95,11 +97,44 @@ npm run dev
 
 ---
 
-## 4. Vercel 배포
+## 4. Vercel 배포 (유튜브용 공개 웹사이트)
 
-1. GitHub에 푸시 후 [vercel.com](https://vercel.com)에서 Import
-2. Environment Variables에 `.env.local`과 동일하게 설정
-3. Deploy
+`localhost`는 본인 컴퓨터에서만 보입니다. **인터넷에 공개**하려면 Vercel에 배포합니다.
+
+### 한 번에 배포하기 (추천)
+
+터미널에 아래를 **복붙**하고 Enter:
+
+```bash
+cd "/Users/youjin/Desktop/리봄어플만들기" && bash scripts/deploy.sh
+```
+
+1. 처음이면 브라우저가 열리고 **Vercel 로그인** (GitHub/Google 무료 가입)
+2. 끝나면 `https://리봄-xxx.vercel.app` 같은 **공개 주소**가 나옵니다
+3. 그 주소를 유튜브 설명란·영상에 넣으면 됩니다
+
+### 사전예약 저장 설정 (필수)
+
+배포만 하면 입력 데이터가 저장되지 않습니다. **Supabase에 테이블**이 있어야 합니다.
+
+1. [supabase.com](https://supabase.com) → 프로젝트 → **SQL Editor**
+2. `supabase/setup_pre_register.sql` 파일 내용 **전체 복붙** → **Run**
+3. **Table Editor → pre_registrations** 에서 접수 목록 확인
+
+공개 사전예약 주소: `https://rebom-libom.vercel.app/pre-register`
+
+### 배포 후 Supabase 설정 (회원가입 쓰려면 필수)
+
+1. [supabase.com](https://supabase.com) → 프로젝트 → **Authentication → URL Configuration**
+2. **Site URL**: 배포된 주소 (예: `https://rebom-xxx.vercel.app`)
+3. **Redirect URLs**에 같은 주소 추가 후 Save
+
+### 웹에서 배포하는 방법 (대안)
+
+1. [vercel.com](https://vercel.com) 가입
+2. **Add New → Project** → GitHub 연결 후 이 폴더 업로드
+3. Environment Variables에 `.env.local` 내용 그대로 입력
+4. Deploy
 
 ---
 

@@ -12,7 +12,7 @@ export default function LandingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="landing-prose">
         <Hero />
         <WhySection />
         <ProblemsSection />

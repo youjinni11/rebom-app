@@ -6,9 +6,15 @@ import { ProfileCard } from "@/components/ProfileCard";
 
 interface RecommendationListProps {
   initialProfiles: Profile[];
+  compact?: boolean;
+  onMatched?: () => void;
 }
 
-export function RecommendationList({ initialProfiles }: RecommendationListProps) {
+export function RecommendationList({
+  initialProfiles,
+  compact = false,
+  onMatched,
+}: RecommendationListProps) {
   const [profiles] = useState(initialProfiles);
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [sentIds, setSentIds] = useState<Set<string>>(new Set());
@@ -35,7 +41,8 @@ export function RecommendationList({ initialProfiles }: RecommendationListProps)
       setSentIds((prev) => new Set(prev).add(candidateId));
 
       if (data.matched) {
-        setMatchMessage("🎉 맞관심 매칭이 성사되었습니다! 매칭 탭에서 확인하세요.");
+        setMatchMessage("🎉 맞관심 매칭이 성사되었습니다! 맞관심 탭에서 확인하세요.");
+        onMatched?.();
       }
     } catch {
       alert("네트워크 오류가 발생했습니다.");
@@ -67,6 +74,7 @@ export function RecommendationList({ initialProfiles }: RecommendationListProps)
         <ProfileCard
           key={profile.user_id}
           profile={profile}
+          compact={compact}
           onInterest={() => handleInterest(profile.user_id)}
           interestLoading={loadingId === profile.user_id}
           interestSent={sentIds.has(profile.user_id)}

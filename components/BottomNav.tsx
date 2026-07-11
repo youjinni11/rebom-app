@@ -4,10 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/home", label: "추천" },
   { href: "/matches", label: "매칭" },
   { href: "/schedule", label: "일정" },
-  { href: "/my", label: "내 정보" },
+  { href: "/my", label: "프로필" },
 ];
 
 export function BottomNav() {
