@@ -28,7 +28,14 @@ echo "✅ 빌드 성공"
 echo ""
 
 echo "▶ 2/4 Vercel 로그인"
-VERCEL_AUTH="$HOME/.local/share/com.vercel.cli/auth.json"
+# macOS: Library/Application Support · Linux: .local/share
+VERCEL_AUTH_MAC="$HOME/Library/Application Support/com.vercel.cli/auth.json"
+VERCEL_AUTH_LINUX="$HOME/.local/share/com.vercel.cli/auth.json"
+if [ -f "$VERCEL_AUTH_MAC" ]; then
+  VERCEL_AUTH="$VERCEL_AUTH_MAC"
+else
+  VERCEL_AUTH="$VERCEL_AUTH_LINUX"
+fi
 if [ ! -f "$VERCEL_AUTH" ]; then
   echo ""
   echo "   ┌─────────────────────────────────────────────┐"
